@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>LinguaAI | Translation Tool</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <div class="background-glow glow-one"></div>
+    <div class="background-glow glow-two"></div>
+    <header class="navbar">
+
+        <div class="brand">
+
+            <div class="brand-icon">
+                <span>✦</span>
+            </div>
+
+            <div>
+                <h2>Lingua<span>AI</span></h2>
+                <p>Smart Translation</p>
+            </div>
+
+        </div>
+
+        <div class="nav-right">
+
+            <div class="status-pill">
+                <span class="status-dot"></span>
+                Translation Engine Online
+            </div>
+
+        </div>
+
+    </header>
+
+    <main class="main-container">
+
+        <section class="hero">
+
+            <div class="hero-badge">
+                <span>✦</span>
+                AI POWERED LANGUAGE TOOL
+            </div>
+
+            <h1>
+                Break the language barrier.
+                <span>Instantly.</span>
+            </h1>
+
+            <p>
+                Translate your thoughts into any language with
+                speed, simplicity and precision.
+            </p>
+
+        </section>
+
+        <section class="translator-card">
+
+            <div class="language-controls">
+
+                <div class="language-selector">
+
+                    <label>
+                        <span class="label-icon">◎</span>
+                        SOURCE LANGUAGE
+                    </label>
+
+                    <div class="select-wrapper">
+
+                        <select id="sourceLanguage">
+
+                            <option value="auto">
+                                ✨ Detect Language
+                            </option>
+
+                            <option value="en">
+                                🇬🇧 English
+                            </option>
+
+                            <option value="ur">
+                                🇵🇰 Urdu
+                            </option>
+
+                            <option value="ar">
+                                🇸🇦 Arabic
+                            </option>
+
+                            <option value="fr">
+                                🇫🇷 French
+                            </option>
+
+                            <option value="de">
+                                🇩🇪 German
+                            </option>
+
+                            <option value="es">
+                                🇪🇸 Spanish
+                            </option>
+
+                            <option value="it">
+                                🇮🇹 Italian
+                            </option>
+
+                            <option value="hi">
+                                🇮🇳 Hindi
+                            </option>
+
+                            <option value="zh">
+                                🇨🇳 Chinese
+                            </option>
+
+                            <option value="ja">
+                                🇯🇵 Japanese
+                            </option>
+
+                            <option value="ko">
+                                🇰🇷 Korean
+                            </option>
+
+                        </select>
+
+                        <span class="arrow">⌄</span>
+
+                    </div>
+
+                </div>
+
+                <button
+                    id="swapButton"
+                    class="swap-button"
+                    title="Swap languages">
+
+                    <span>⇄</span>
+
+                </button>
+
+
+                <div class="language-selector">
+
+                    <label>
+                        <span class="label-icon">◉</span>
+                        TARGET LANGUAGE
+                    </label>
+
+                    <div class="select-wrapper">
+
+                        <select id="targetLanguage">
+
+                            <option value="ur">
+                                🇵🇰 Urdu
+                            </option>
+
+                            <option value="en">
+                                🇬🇧 English
+                            </option>
+
+                            <option value="ar">
+                                🇸🇦 Arabic
+                            </option>
+
+                            <option value="fr">
+                                🇫🇷 French
+                            </option>
+
+                            <option value="de">
+                                🇩🇪 German
+                            </option>
+
+                            <option value="es">
+                                🇪🇸 Spanish
+                            </option>
+
+                            <option value="it">
+                                🇮🇹 Italian
+                            </option>
+
+                            <option value="hi">
+                                🇮🇳 Hindi
+                            </option>
+
+                            <option value="zh">
+                                🇨🇳 Chinese
+                            </option>
+
+                            <option value="ja">
+                                🇯🇵 Japanese
+                            </option>
+
+                            <option value="ko">
+                                🇰🇷 Korean
+                            </option>
+
+                        </select>
+
+                        <span class="arrow">⌄</span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="translation-panels">
+
+                <div class="editor-panel">
+
+                    <div class="panel-top">
+
+                        <div class="panel-title">
+
+                            <div class="title-icon input-icon">
+                                A
+                            </div>
+
+                            <div>
+                                <h3>Original Text</h3>
+                                <span>Enter your message</span>
+                            </div>
+
+                        </div>
+
+                        <span id="charCount" class="counter">
+                            0 / 5000
+                        </span>
+
+                    </div>
+
+
+                    <textarea
+                        id="inputText"
+                        maxlength="5000"
+                        placeholder="Type or paste your text here..."></textarea>
+
+
+                    <div class="panel-bottom">
+
+                        <button
+                            id="clearButton"
+                            class="text-action">
+
+                            <span>⌫</span>
+                            Clear
+
+                        </button>
+
+                        <span class="tip">
+                            Tip: Write naturally
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <div class="editor-panel output-panel">
+
+                    <div class="panel-top">
+
+                        <div class="panel-title">
+
+                            <div class="title-icon output-icon">
+                                文
+                            </div>
+
+                            <div>
+                                <h3>Translation</h3>
+
+                                <span id="detectedLanguage">
+                                    Ready to translate
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                        <div class="ai-badge">
+                            <span>✦</span> AI
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        id="outputText"
+                        class="output-area">
+
+                        <div class="empty-state">
+
+                            <div class="empty-icon">
+                                ✦
+                            </div>
+
+                            <h4>Your translation will appear here</h4>
+
+                            <p>
+                                Select your languages and click
+                                translate to get started.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="panel-bottom">
+
+                        <div class="output-actions">
+
+                            <button
+                                id="copyButton"
+                                class="text-action">
+
+                                <span>▣</span>
+                                Copy
+
+                            </button>
+
+                            <button
+                                id="speakButton"
+                                class="text-action">
+
+                                <span>◉</span>
+                                Listen
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <button
+                id="translateButton"
+                class="translate-button">
+
+                <div class="button-content">
+
+                    <span class="translate-icon">✦</span>
+
+                    <span id="buttonText">
+                        Translate Text
+                    </span>
+
+                    <span class="button-arrow">
+                        →
+                    </span>
+
+                </div>
+
+                <span id="loader" class="loader hidden"></span>
+
+            </button>
+
+            <div
+                id="status"
+                class="status-message">
+            </div>
+
+        </section>
+
+        <section class="features">
+
+            <div class="feature">
+
+                <div class="feature-icon">
+                    ⚡
+                </div>
+
+                <div>
+                    <strong>Fast Translation</strong>
+                    <span>Quick results in seconds</span>
+                </div>
+
+            </div>
+
+
+            <div class="feature">
+
+                <div class="feature-icon">
+                    ◉
+                </div>
+
+                <div>
+                    <strong>Multiple Languages</strong>
+                    <span>Translate across languages</span>
+                </div>
+
+            </div>
+
+
+            <div class="feature">
+
+                <div class="feature-icon">
+                    🔊
+                </div>
+
+                <div>
+                    <strong>Listen & Copy</strong>
+                    <span>Use your translation anywhere</span>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+
+        <div class="footer-line"></div>
+
+        <p>
+            Built with <span>♥</span> using Flask, JavaScript &
+            Translation API
+        </p>
+
+        <p class="footer-small">
+            LinguaAI • Language Translation Tool
+        </p>
+
+    </footer>
+
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+
+</html>
+
