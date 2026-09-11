@@ -41,3 +41,4 @@ AI-Translation tool/
 │   └── index.html
 │
 └── README.md
+
